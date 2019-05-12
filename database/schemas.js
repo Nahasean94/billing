@@ -6,7 +6,7 @@ Declare schemas
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const SimSchema = new Schema({
+const SimCardSchema = new Schema({
     iccid: {
         type: Number,
         unique: true,
@@ -27,13 +27,13 @@ const SimSchema = new Schema({
         max: 20,
         min: 20
     },
-    PIN1: {
+    pin1: {
         type: Number,
         required: [true, 'PIN is a required field'],
         max: 4,
         min: 4
     },
-    PUC: {
+    puc: {
         type: Number,
         required: [true, 'PUC is a required field'],
         max: 6,
@@ -47,7 +47,12 @@ const SimSchema = new Schema({
         enum: [0, 1],
         default: 0
     },
-    accountBalance:{
+    msisdn: {
+        type: Number,
+        required: [true, 'status is a required field'],
+        default: 0
+    },
+    accountBalance: {
         type: Number,
         required: [true, 'accountBalance is a required field'],
         default: 0
@@ -55,7 +60,7 @@ const SimSchema = new Schema({
 })
 
 
-const Sim = mongoose.model('Sim', SimSchema)
+const SimCard = mongoose.model('Sim', SimCardSchema)
 
 module.exports = {
     Sim,
