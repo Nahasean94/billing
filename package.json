@@ -8,6 +8,11 @@
     "koa-body": "^4.1.0",
     "koa-router": "^7.2.1",
     "koa2-cors": "^2.0.6",
-    "mongoose": "^5.5.7"
+    "mongoose": "^5.5.7",
+    "nodemon": "1.18.11"
+  },
+  "scripts": {
+    "dev": "nodemon",
+    "start": "node index.js"
   }
 }

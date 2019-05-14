@@ -16,7 +16,6 @@ router.get('/provisionSim', async ctx => {
    await queries.provisionSim({
        iccid,imsi,ki,pin1,puc
    }).then(response=>{
-       ifError()
    })
    // await queries.
 })

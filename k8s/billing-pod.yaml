@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: billing-pod
+  labels:
+    component: api
+spec:
+  container:
+    - name: billing
+      image: nahasean/billing
+      ports:
+        - containerPort: 3000
