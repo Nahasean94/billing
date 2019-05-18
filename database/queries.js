@@ -4,15 +4,29 @@ const mongoose = require('mongoose')
 
 //Connect to Mongodb
 
-mongoose.connect('mongodb://localhost/simcards', {useMongoClient: true, promiseLibrary: global.Promise})
+mongoose.connect('mongodb://localhost/simcards', { promiseLibrary: global.Promise, useCreateIndex: true,useNewUrlParser: true })
 const queries = {
 
    provisionSim:async (sim={})=>{
        return await new SimCard({
            ...sim,
-           status:0,
-           activeBalance:0
        }).save()
+   },
+    activateSim :async (sim={})=>{
+       return await SimCard.findOneAndUpdate({
+           iccid:sim.iccid,
+           imsi:sim.imsi
+       },{status:1,msisdn:sim.msisdn},{new:true}).exec()
+   },
+    querySubscriberInfo :async (sim={})=>{
+       return await SimCard.findOne({
+           msisdn:sim.msisdn
+       }).exec()
+   },
+    adjustAccountBalance :async (sim={})=>{
+       return await SimCard.findOneAndUpdate({
+           msisdn:sim.msisdn
+       },{$inc:{'accountBalance':sim.amount}},{new:true}).exec()
    }
 
 

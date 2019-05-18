@@ -13,6 +13,11 @@
   },
   "scripts": {
     "dev": "nodemon",
+    "test": "mocha",
     "start": "node index.js"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
   }
 }

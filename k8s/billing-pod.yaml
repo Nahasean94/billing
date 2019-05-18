@@ -5,7 +5,7 @@ metadata:
   labels:
     component: api
 spec:
-  container:
+  containers:
     - name: billing
       image: nahasean/billing
       ports:

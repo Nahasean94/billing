@@ -11,39 +11,32 @@ const SimCardSchema = new Schema({
         type: Number,
         unique: true,
         required: [true, 'ICCID is a required field'],
-        max: 20,
-        min: 20
     },
     imsi: {
         type: Number,
         unique: true,
         required: [true, 'IMSI is a required field'],
-        max: 15,
-        min: 20
+
     },
     ki: {
         type: String,
         required: [true, 'Authentication key is a required field'],
-        max: 20,
-        min: 20
+        maxlength: 20,
+        minlength: 20
     },
     pin1: {
         type: Number,
         required: [true, 'PIN is a required field'],
-        max: 4,
-        min: 4
+
     },
     puc: {
         type: Number,
         required: [true, 'PUC is a required field'],
-        max: 6,
-        min: 6
+
     },
     status: {
         type: Number,
         required: [true, 'status is a required field'],
-        max: 1,
-        min: 1,
         enum: [0, 1],
         default: 0
     },
@@ -63,6 +56,6 @@ const SimCardSchema = new Schema({
 const SimCard = mongoose.model('Sim', SimCardSchema)
 
 module.exports = {
-    Sim,
+    SimCard,
 
 }
